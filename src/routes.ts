@@ -1,6 +1,7 @@
 import { Route } from "@vaadin/router";
 import './my-app'
 import './bloodborne-gallery'
+import './components/boss-page'
 
 export const routes:Route[] =[
     
@@ -12,6 +13,10 @@ export const routes:Route[] =[
       {
         path: "/about",
         component: "bloodborne-gallery",
+      },
+      {
+        path: "/bloodborne/boss/:id",
+        component: "boss-page",
       }
    
 ]

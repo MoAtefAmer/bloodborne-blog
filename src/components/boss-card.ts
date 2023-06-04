@@ -43,7 +43,7 @@ export class BossCard extends LitElement {
         height: 22px;
       }
       .owner-display {
-        display: inline-flex;
+        display: flex;
         gap: 5px;
         margin-top: 3px;
         z-index: 50;
@@ -156,12 +156,12 @@ export class BossCard extends LitElement {
           <!-- -------------- Top owner part ---------------- -->
   
     
-          <a class="owner-display" href=''>
-            <div>
+          <div class="owner-display" href=''>
+            <div >
               <img src="/cleric_beast.jpg" class="avatar" alt="Avatar" />
             </div>
             <div class="address-style">@father</div>
-        </a>
+  </div>
 
      
           <!-- -------------- Top owner part end ---------------- -->
