@@ -9,6 +9,8 @@ type Metadata = {
     
 }
 
+
+
 // marked.use({
 //     async: true,
 //     pedantic: false,
@@ -50,10 +52,10 @@ export class BossPage extends LitElement {
   ];
 
 
-  async fetchMarkdownFile() {
+  async fetchMarkdownFile(url:string) {
     try {
       const response = await fetch(
-        `/data/cleric-beast.md`
+        `/data/${url}`
       )
 
       console.log('response', response)
@@ -67,17 +69,22 @@ export class BossPage extends LitElement {
   }
 
 
-connectedCallback(): void {
+
+
+async connectedCallback() {
     super.connectedCallback();
+    console.log('this.bossUrl', this.bossUrl)
 
     this.fetchData()
     
   }
+  
 
 @property({ type: String }) title = '' 
 @property({ type: String }) content = ''
 @property({ type: Boolean }) fetching = false
-
+@property({ type: String }) bossUrl = null
+@property({ type: String }) bossData = null
 
 
   fetchMetadata(data:string) {
@@ -108,7 +115,7 @@ connectedCallback(): void {
 
 
     try {
-      const response = await this.fetchMarkdownFile()
+      const response = await this.fetchMarkdownFile(this.bossUrl as unknown as string)
       const data:string = await response?.text()!
       
       const { content, ...metadata } = await this.fetchMetadata(data)
@@ -127,6 +134,8 @@ connectedCallback(): void {
 
 
   render() {
+    console.log('this.bossData', this.bossData)
+    console.log('this.bossUrl', this.bossUrl)
     return html`
       <div class=${`content-box`}>
         <div>
@@ -156,11 +165,10 @@ connectedCallback(): void {
                 </mwc-icon>
               </div>
               <div>
-                <!-- <p><a id="blog" href="/blog">Blog</a></p> -->
+                <p><a id="blog" href="/">BloodBorne Gallery</a></p>
               </div>
               <div style="display:flex;justify-content:center;align-items:center;">
-                <mwc-icon
-                  ><svg
+                <svg
                     class="icon"
                    
                     xmlns="http://www.w3.org/2000/svg"
@@ -176,7 +184,7 @@ connectedCallback(): void {
                       fill="currentColor"
                     ></path>
                   </svg>
-                </mwc-icon>
+                
               </div>
               <div><p>${this.title}</p></div>
             </div>
@@ -210,3 +218,8 @@ connectedCallback(): void {
   }
 }
 
+declare global {
+  interface HTMLElementTagNameMap {
+    'boss-page': BossPage;
+  }
+}

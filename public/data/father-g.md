@@ -1,5 +1,5 @@
 ---
-title: "Cleric Beast"
+title: "Father Gasigcone"
 tags: []
 ---
 
@@ -7,9 +7,9 @@ tags: []
 
 <br />
 
-#### Beast of the Clergy
+#### "Beasts all over the shop... You'll be one of them, sooner or later..."
 <figure>
-<img src="/cl-beast.jpg" class="rounded-md my-8" alt="Cleric Beast" style="width:1000px;border-radius:8px:">
+<img src="/father-gas.jpg" class="rounded-md my-8" alt="Father g" style="width:1000px;border-radius:8px:">
 </figure>
 
 

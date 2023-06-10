@@ -1,8 +1,10 @@
+import { bossList } from './../public/data/index';
 import { LitElement, css, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
 import './components/boss-card';
 import { sharedStyles } from './styles.ts';
+import { map } from 'lit/directives/map.js';
 /**
  * An example element.
  *
@@ -46,19 +48,22 @@ export class MyApp extends LitElement {
   @property({ type: String })
   path = '';
 
-  connectedCallback() {
+  @property({ type: Array })
+  bossList = [];
+
+  async connectedCallback() {
     super.connectedCallback();
+    console.log('bossList', bossList)
   }
 
   render() {
     return html`
       <div class="flexw flexr main-container">
-        <boss-card></boss-card>
-        <boss-card></boss-card>
-        <boss-card></boss-card>
-        <boss-card></boss-card>
+     ${map(bossList, (boss) => {
+        return html`<boss-card .bossUrl=${boss}></boss-card>`
+     })}
+ 
         <!-- <boss-card></boss-card> -->
-    
       </div>
     `;
   }

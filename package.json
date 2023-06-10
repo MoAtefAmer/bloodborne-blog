@@ -12,9 +12,11 @@
     "@types/marked": "^5.0.0",
     "@vaadin/router": "^1.7.5",
     "lit": "^2.7.2",
-    "marked": "^5.0.4"
+    "marked": "^5.0.4",
+    "node-fs": "^0.1.7"
   },
   "devDependencies": {
+    "@types/node": "^20.2.6",
     "typescript": "^5.0.2",
     "vite": "^4.3.9"
   }
