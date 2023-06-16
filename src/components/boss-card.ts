@@ -1,6 +1,11 @@
 import { LitElement, html, css } from 'lit';
-import { customElement } from 'lit/decorators.js';
+import { customElement, property } from 'lit/decorators.js';
 import { sharedStyles } from '../styles.ts';
+
+type BossList = {
+  name: string;
+};
+
 @customElement('boss-card')
 export class BossCard extends LitElement {
   static styles = [
@@ -24,7 +29,7 @@ export class BossCard extends LitElement {
         pointer-events: auto;
         box-sizing: border-box;
         padding-top: 1rem;
-        padding-bottom:1rem;
+        padding-bottom: 1rem;
         padding-left: 1.2rem;
         padding-right: 1.2rem;
 
@@ -127,64 +132,64 @@ export class BossCard extends LitElement {
     `,
   ];
 
-  render() {
-    return html`
-      <div class="card"  >
-      
-<div class="card-im">
+  connectedCallback() {
+    super.connectedCallback();
+    this.bossUrl = this.data?.component?.replace('.md', '');
+    
+  }
 
+  @property({ type: { name: String } }) data = null;
+  @property({ type: String }) bossUrl = null;
+
+  render() {
+    console.log('data', this.data);
+    return html`
+    
+      <div class="card" @click=${()=>{window.location.href=`/bloodborne/boss/${this.bossUrl}`}}>
+        <div class="card-im">
           <div class="top-text">
             <h2 style="position:absolute;top:65%;padding:1rem;left:5%;">
-              Cleric Beast
+              ${this.data?.data.name}
             </h2>
           </div>
-    
 
           <!-- ----------- Image part --------- -->
 
           <div class="image-part">
-            <img width="340" height="340" src="/cleric_beast.jpg" alt="Image" />
+            <img width="340" height="340" src="${this.data?.data.image}" alt="Image" />
           </div>
-
-          </div>   
- 
+        </div>
 
         <!-- ----------- Image part end --------- -->
         <!-- -------------- Bottom card part ---------------- -->
-    
-        <div class="bottom-info-part"   @click=${()=>{}}>
+
+        <div class="bottom-info-part" @click=${() => {}}>
           <!-- -------------- Top owner part ---------------- -->
-  
-    
-          <div class="owner-display" href=''>
-            <div >
+
+          <div class="owner-display" href="">
+            <div>
               <img src="/cleric_beast.jpg" class="avatar" alt="Avatar" />
             </div>
             <div class="address-style">@father</div>
-  </div>
+          </div>
 
-     
           <!-- -------------- Top owner part end ---------------- -->
-        
+
           <div style="display:flex;">
             <div class="address-style" style="margin-top:0.7rem;">
               <!-- Price -->
-          Buy Now
+              Buy Now
             </div>
           </div>
-      
-          <div class="bottom-container">
-            <div class="crypto-text">
-            0 MATIC
-            </div>
 
-       
+          <div class="bottom-container">
+            <div class="crypto-text">0 MATIC</div>
           </div>
-              </div>
-        
+        </div>
 
         <!-- -------------- Bottom card part end---------------- -->
       </div>
-    `
+     
+    `;
   }
 }

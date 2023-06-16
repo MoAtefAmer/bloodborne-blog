@@ -76,7 +76,7 @@ export class BloodborneGallery extends LitElement {
   `;
 
     render() {
-        return html`<div> Bloodborne</div>`;
+        return html`<div style="color:black;"> Bloodborne Gallery</div>`;
     }
 }
 

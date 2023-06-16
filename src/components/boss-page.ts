@@ -2,14 +2,12 @@ import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import { marked } from 'marked';
+import { router } from '..';
 
 type Metadata = {
-    [key:string] : string;
-    title:string;
-    
-}
-
-
+  [key: string]: string;
+  title: string;
+};
 
 // marked.use({
 //     async: true,
@@ -23,9 +21,9 @@ export class BossPage extends LitElement {
     css`
       :host {
         display: inline-flex;
-        margin:5rem 0;
-        max-width:1400px;
-      
+        margin: 5rem 0;
+        max-width: 1400px;
+        color: black;
       }
 
       .content-box {
@@ -36,7 +34,7 @@ export class BossPage extends LitElement {
         align-items: center;
         flex-direction: column;
         padding: 40px;
-    
+
         border-radius: 10px;
       }
       .bottom-bar {
@@ -51,91 +49,69 @@ export class BossPage extends LitElement {
     `,
   ];
 
-
-  async fetchMarkdownFile(url:string) {
+  async fetchMarkdownFile(url: string) {
     try {
-      const response = await fetch(
-        `/data/${url}`
-      )
+      const response = await fetch(`/data/${url}`);
 
-      console.log('response', response)
-      if (response.status === 200) return response
-
-  
-
+      console.log('response', response);
+      if (response.status === 200) return response;
     } catch (e) {
-      console.warn(e)
+      console.warn(e);
     }
   }
 
-
-
-
-async connectedCallback() {
+  async connectedCallback() {
     super.connectedCallback();
-    console.log('this.bossUrl', this.bossUrl)
-
-    this.fetchData()
-    
+    this.fetchData();
   }
-  
 
-@property({ type: String }) title = '' 
-@property({ type: String }) content = ''
-@property({ type: Boolean }) fetching = false
-@property({ type: String }) bossUrl = null
-@property({ type: String }) bossData = null
+  @property({ type: String }) title = '';
+  @property({ type: String }) content = '';
+  @property({ type: Boolean }) fetching = false;
 
-
-  fetchMetadata(data:string) {
-    const matches = data.split('---')
-    const metadata:Metadata = {
-        title: ''
-    }
+  fetchMetadata(data: string) {
+    const matches = data.split('---');
+    const metadata: Metadata = {
+      title: '',
+    };
     matches[1]
       .trim()
       .split('\n')
       .forEach((line) => {
-        const [key, value] = line.split(':').map((x) => x.trim())
+        const [key, value] = line.split(':').map((x) => x.trim());
         if (key === 'date') {
-          metadata[key] = value.substring(1, 11) 
+          metadata[key] = value.substring(1, 11);
         } else if (key === 'title') {
-          metadata[key] = value.replace(/"/g, '') 
+          metadata[key] = value.replace(/"/g, '');
         } else {
-          metadata[key] = value
+          metadata[key] = value;
         }
-      })
+      });
 
-    const content = matches.slice(2).join('---').trim()
-    return { ...metadata, content }
+    const content = matches.slice(2).join('---').trim();
+    return { ...metadata, content };
   }
-
 
   async fetchData() {
-
-
+    console.log('ROuter.loca', router.location);
+    const bossUrl = router.location.params.bossUrl.toString();
+    console.log('bossUrl :>> ', bossUrl);
     try {
-      const response = await this.fetchMarkdownFile(this.bossUrl as unknown as string)
-      const data:string = await response?.text()!
-      
-      const { content, ...metadata } = await this.fetchMetadata(data)
-      console.log('metadata: ', metadata)
-        
-      this.title = metadata?.title
+      const response = await this.fetchMarkdownFile(bossUrl);
+      const data: string = await response?.text()!;
 
-      this.content = marked(content)
+      const { content, ...metadata } = this.fetchMetadata(data);
+      console.log('metadata: ', metadata);
 
+      this.title = metadata?.title;
+
+      this.content = marked(content);
     } catch (ex) {
-      console.error('Failed loading md: ', ex)
-
+      console.error('Failed loading md: ', ex);
     }
-
   }
 
-
   render() {
-    console.log('this.bossData', this.bossData)
-    console.log('this.bossUrl', this.bossUrl)
     return html`
       <div class=${`content-box`}>
         <div>
@@ -144,11 +120,12 @@ async connectedCallback() {
               <div>
                 <p><a href="/">Home</a></p>
               </div>
-              <div style="display:flex;justify-content:center;align-items:center;">
+              <div
+                style="display:flex;justify-content:center;align-items:center;"
+              >
                 <mwc-icon
                   ><svg
                     class="icon"
-                   
                     xmlns="http://www.w3.org/2000/svg"
                     width="15"
                     height="15"
@@ -167,24 +144,24 @@ async connectedCallback() {
               <div>
                 <p><a id="blog" href="/">BloodBorne Gallery</a></p>
               </div>
-              <div style="display:flex;justify-content:center;align-items:center;">
+              <div
+                style="display:flex;justify-content:center;align-items:center;"
+              >
                 <svg
-                    class="icon"
-                   
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="15"
-                    height="15"
+                  class="icon"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="15"
+                  height="15"
+                  fill="currentColor"
+                  class="bi bi-chevron-right"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
                     fill="currentColor"
-                    class="bi bi-chevron-right"
-                    viewBox="0 0 16 16"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
-                      fill="currentColor"
-                    ></path>
-                  </svg>
-                
+                  ></path>
+                </svg>
               </div>
               <div><p>${this.title}</p></div>
             </div>
@@ -203,18 +180,9 @@ async connectedCallback() {
           <h1 style="font-size:45px;">${this.title}</h1>
           <p style="font-size:20px;">${unsafeHTML(this.content)}</p>
         </div>
-        <div class="bottom-bar">
-       
-
-
-       
-        
-
-      
-       
-        </div>
+        <div class="bottom-bar"></div>
       </div>
-    `
+    `;
   }
 }
 
