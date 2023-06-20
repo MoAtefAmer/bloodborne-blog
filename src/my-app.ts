@@ -29,7 +29,8 @@ export class MyApp extends LitElement {
         flex-wrap: wrap;
         margin :0 auto;
         justify-content: center;
-         align-items: center;"
+         align-items: center;
+        
       }
     `,
   ];
@@ -53,16 +54,19 @@ export class MyApp extends LitElement {
 
   async connectedCallback() {
     super.connectedCallback();
-    console.log('bossList', bossList)
+    console.log('bossList', bossList);
   }
 
   render() {
     return html`
-      <div class="flexw flexr main-container">
-     ${map(bossList, (boss) => {
-        return html`<boss-card .data=${boss}></boss-card>`
-     })}
- 
+      <div class="flexw flexr main-container" >
+        ${map(bossList, (boss) => {
+          return html`<boss-card .data=${boss}></boss-card>`;
+        })}
+        <boss-card .data=${bossList[0]}></boss-card>
+        <boss-card .data=${bossList[0]}></boss-card>
+        <boss-card .data=${bossList[0]}></boss-card>
+        <boss-card .data=${bossList[0]}></boss-card>
         <!-- <boss-card></boss-card> -->
       </div>
     `;

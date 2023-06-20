@@ -23,7 +23,7 @@ export class BossPage extends LitElement {
         display: inline-flex;
         margin: 5rem 0;
         max-width: 1400px;
-        color: black;
+        color: white;
       }
 
       .content-box {
