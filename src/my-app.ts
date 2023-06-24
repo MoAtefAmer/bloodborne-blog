@@ -22,15 +22,25 @@ export class MyApp extends LitElement {
         padding: 2rem;
         text-align: center;
       }
+      img {
+        max-width: 100%;
+        height: auto;
+      }
 
       .main-container {
-        gap:10px; 
-         display: flex;
+        gap: 10px;
+        display: flex;
         flex-wrap: wrap;
-        margin :0 auto;
+        margin: 0 auto;
         justify-content: center;
-         align-items: center;
-        
+        align-items: center;
+      }
+
+      @media (min-width: 768px) {
+        img {
+        max-width: 100%;
+        height: 300px;
+      }
       }
     `,
   ];
@@ -59,14 +69,17 @@ export class MyApp extends LitElement {
 
   render() {
     return html`
-      <div class="flexw flexr main-container" >
+      <div class="flexw flexr main-container">
+        <img  src="bloodbornebanner.png" alt="Image" />
+        <h2 style=" font-size: 24px;font-weight: bold;">
+          A simple strategy guide to defeat Bloodborne bosses
+        </h2>
+      </div>
+      <div class="flexw flexr main-container">
         ${map(bossList, (boss) => {
           return html`<boss-card .data=${boss}></boss-card>`;
         })}
-        <boss-card .data=${bossList[0]}></boss-card>
-        <boss-card .data=${bossList[0]}></boss-card>
-        <boss-card .data=${bossList[0]}></boss-card>
-        <boss-card .data=${bossList[0]}></boss-card>
+
         <!-- <boss-card></boss-card> -->
       </div>
     `;

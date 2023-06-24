@@ -14,9 +14,9 @@ export class BossCard extends LitElement {
       /* ---------CARD------------ */
 
       .image-part {
-        width: 350px;
+        width: 300px;
 
-        height: 450px;
+        height: 350px;
 
         /* z-index:1000; */
       }
@@ -72,7 +72,7 @@ export class BossCard extends LitElement {
         border-radius: 10px;
         z-index: 0;
       }
-
+/* 
       .top-text {
         display: flex;
         flex-direction: column;
@@ -86,7 +86,7 @@ export class BossCard extends LitElement {
         border-radius: 10px;
         z-index: 1;
         color: white;
-      }
+      } */
 
       .top-text h2 {
         position: absolute;
@@ -145,7 +145,7 @@ export class BossCard extends LitElement {
       >
         <div class="card-im">
           <div class="top-text">
-            <h2 style="position:absolute;top:80%;padding:1rem;font-size:24px;">
+            <h2 style="position:absolute;top:76%;padding:1rem;font-size:20px;">
               ${this.data?.data.name}
             </h2>
           </div>
@@ -157,10 +157,7 @@ export class BossCard extends LitElement {
           </div>
         </div>
 
-        <!-- ----------- Image part end --------- -->
-        <!-- -------------- Bottom card part ---------------- -->
 
-        <!-- -------------- Bottom card part end---------------- -->
       </div>
     `;
   }
