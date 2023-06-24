@@ -53,7 +53,7 @@ export class BossPage extends LitElement {
     try {
       const response = await fetch(`/data/${url}`);
 
-      console.log('response', response);
+    
       if (response.status === 200) return response;
     } catch (e) {
       console.warn(e);
@@ -93,15 +93,15 @@ export class BossPage extends LitElement {
   }
 
   async fetchData() {
-    console.log('ROuter.loca', router.location);
+
     const bossUrl = router.location.params.bossUrl.toString();
-    console.log('bossUrl :>> ', bossUrl);
+
     try {
       const response = await this.fetchMarkdownFile(bossUrl);
       const data: string = await response?.text()!;
 
       const { content, ...metadata } = this.fetchMetadata(data);
-      console.log('metadata: ', metadata);
+    
 
       this.title = metadata?.title;
 

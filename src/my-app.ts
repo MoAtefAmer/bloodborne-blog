@@ -64,7 +64,7 @@ export class MyApp extends LitElement {
 
   async connectedCallback() {
     super.connectedCallback();
-    console.log('bossList', bossList);
+
   }
 
   render() {

@@ -135,7 +135,7 @@ export class BossCard extends LitElement {
   @property({ type: String }) bossUrl = null;
 
   render() {
-    console.log('data', this.data);
+  
     return html`
       <div
         class="card"
