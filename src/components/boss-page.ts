@@ -21,17 +21,17 @@ export class BossPage extends LitElement {
     css`
       :host {
         display: inline-flex;
-        margin: 5rem 0;
+        margin: 0 0;
         max-width: 1400px;
         color: white;
       }
 
       .content-box {
-        width: 75%;
-        margin: auto; /* add this line to center the div */
+        width: 100%;
+        margin: 0 auto; /* add this line to center the div */
         display: flex;
-        justify-content: center;
-        align-items: center;
+        /* justify-content: center; */
+        /* align-items: center; */
         flex-direction: column;
         padding: 40px;
 
@@ -46,6 +46,35 @@ export class BossPage extends LitElement {
         gap: 25px;
         border-top: solid 1px black; /* add this line to set a 1px black border */
       }
+
+      .inner-box {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+        padding: 1.5rem;
+      }
+
+      .blog-content {
+        font-size: 20px;
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .breadcrumb-arrow {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 5px;
+      }
+
+      @media (max-width: 768px) {
+        .blog-content {
+          font-size: 40px;
+        }
+      }
     `,
   ];
 
@@ -53,7 +82,6 @@ export class BossPage extends LitElement {
     try {
       const response = await fetch(`/data/${url}`);
 
-    
       if (response.status === 200) return response;
     } catch (e) {
       console.warn(e);
@@ -93,7 +121,6 @@ export class BossPage extends LitElement {
   }
 
   async fetchData() {
-
     const bossUrl = router.location.params.bossUrl.toString();
 
     try {
@@ -101,7 +128,6 @@ export class BossPage extends LitElement {
       const data: string = await response?.text()!;
 
       const { content, ...metadata } = this.fetchMetadata(data);
-    
 
       this.title = metadata?.title;
 
@@ -110,77 +136,60 @@ export class BossPage extends LitElement {
       console.error('Failed loading md: ', ex);
     }
   }
-
+  // <h1 style="font-size:45px;">${this.title}</h1>
+  // <p style="font-size:20px;">${unsafeHTML(this.content)}</p>
   render() {
     return html`
       <div class=${`content-box`}>
-        <div>
+        <div style="display:flex; gap:20px; font-size:17px;">
           <div>
-            <div style="display:flex; gap:20px; font-size:17px;">
-              <div>
-                <p><a href="/">Home</a></p>
-              </div>
-              <div
-                style="display:flex;justify-content:center;align-items:center;"
+            <p><a href="/">Home</a></p>
+          </div>
+          <div class="breadcrumb-arrow">
+            <mwc-icon
+              ><svg
+                class="icon"
+                xmlns="http://www.w3.org/2000/svg"
+                width="15"
+                height="15"
+                fill="currentColor"
+                class="bi bi-chevron-right"
+                viewBox="0 0 16 16"
               >
-                <mwc-icon
-                  ><svg
-                    class="icon"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="15"
-                    height="15"
-                    fill="currentColor"
-                    class="bi bi-chevron-right"
-                    viewBox="0 0 16 16"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
-                      fill="currentColor"
-                    ></path>
-                  </svg>
-                </mwc-icon>
-              </div>
-              <div>
-                <p><a id="blog" href="/">BloodBorne Gallery</a></p>
-              </div>
-              <div
-                style="display:flex;justify-content:center;align-items:center;"
-              >
-                <svg
-                  class="icon"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="15"
-                  height="15"
+                <path
+                  fill-rule="evenodd"
+                  d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
                   fill="currentColor"
-                  class="bi bi-chevron-right"
-                  viewBox="0 0 16 16"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
-                    fill="currentColor"
-                  ></path>
-                </svg>
-              </div>
-              <div><p>${this.title}</p></div>
-            </div>
+                ></path>
+              </svg>
+            </mwc-icon>
           </div>
-          <div style="display:flex; ">
-            <!-- <img
-              style="width:80px; padding-right:10px;"
-              src="/images/icon-512x512.png"
-            /> -->
-            <!-- <div style="display:flex; gap:20px; margin-top:20px;">
-              <p></p>
-             
-            </div> -->
+          <div>
+            <p><a id="blog" href="/">BloodBorne Gallery</a></p>
           </div>
-
-          <h1 style="font-size:45px;">${this.title}</h1>
-          <p style="font-size:20px;">${unsafeHTML(this.content)}</p>
+          <div class="breadcrumb-arrow" style="margin-top:3px;">
+            <svg
+              class="icon"
+              xmlns="http://www.w3.org/2000/svg"
+              width="15"
+              height="15"
+              fill="currentColor"
+              class="bi bi-chevron-right"
+              viewBox="0 0 16 16"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
+                fill="currentColor"
+              ></path>
+            </svg>
+          </div>
+          <div><p>${this.title}</p></div>
         </div>
-        <div class="bottom-bar"></div>
+        <div class="inner-box">
+          <h1 style="font-size:45px;">${this.title}</h1>
+          <div class="blog-content">${unsafeHTML(this.content)}</div>
+        </div>
       </div>
     `;
   }

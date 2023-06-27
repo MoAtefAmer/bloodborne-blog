@@ -7,10 +7,12 @@ tags: []
 
 <br />
 
-#### Beast of the Clergy
-<figure>
-<img src="/cl-beast.jpg" class="rounded-md my-8" alt="Cleric Beast" style="width:1000px;border-radius:8px:">
-</figure>
+
+
+<img src="/cl-beast.jpg" class="rounded-md my-8" alt="Cleric Beast" style="width:1000px;">
+
+
+### Beast of the clergy
 
 
 
