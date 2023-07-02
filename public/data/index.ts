@@ -57,7 +57,7 @@ export const bossList = [
   },
   {
     id: 8,
-    component: 'father-g.md',
+    component: 'witch-hemwick.md',
     data: {
       name: 'Witch of Hemwick',
       image: '/witch.webp',
