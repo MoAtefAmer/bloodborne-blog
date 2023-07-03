@@ -7,7 +7,7 @@ import { bossList } from '../public/data';
 
 
 const bloodborneBossesRoute = bossList.map((item) => ({
-  path: `/bloodborne/boss/${item.component.replace('.md', '')}`,
+  path: `/bloodborne-blog/boss/${item.component.replace('.md', '')}`,
   component: 'boss-page',
   action: (context: any) => {
     context.params.bossUrl = item.component;
@@ -16,7 +16,7 @@ const bloodborneBossesRoute = bossList.map((item) => ({
 
 export const routes: Route[] = [
   {
-    path: '/',
+    path: '/bloodborne-blog',
     component: 'my-app',
   },
   {

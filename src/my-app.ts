@@ -77,7 +77,8 @@ export class MyApp extends LitElement {
       </div>
       <div class="flexw flexr main-container">
         ${map(bossList, (boss) => {
-          return html`<boss-card .data=${boss}></boss-card>`;
+          console.log('boss :>> ', boss);
+          return html`<boss-card .data=${boss} ></boss-card>`;
         })}
 
         <!-- <boss-card></boss-card> -->

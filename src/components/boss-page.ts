@@ -143,7 +143,7 @@ export class BossPage extends LitElement {
       <div class=${`content-box`}>
         <div style="display:flex; gap:20px; font-size:17px;">
           <div>
-            <p><a href="/">Home</a></p>
+            <p><a href="/bloodborne-blog">Home</a></p>
           </div>
           <div class="breadcrumb-arrow">
             <mwc-icon
@@ -164,7 +164,7 @@ export class BossPage extends LitElement {
               </svg>
             </mwc-icon>
           </div>
-          <div>
+          <!-- <div>
             <p><a id="blog" href="/">BloodBorne Gallery</a></p>
           </div>
           <div class="breadcrumb-arrow" style="margin-top:3px;">
@@ -183,7 +183,7 @@ export class BossPage extends LitElement {
                 fill="currentColor"
               ></path>
             </svg>
-          </div>
+          </div> -->
           <div><p>${this.title}</p></div>
         </div>
         <div class="inner-box">

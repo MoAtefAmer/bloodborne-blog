@@ -2,9 +2,13 @@ import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { sharedStyles } from '../styles.ts';
 
-type BossList = {
-  name: string;
-};
+interface Boss {
+  id: number;
+  component: string;
+  data: { image: string; name: string };
+
+  // additional properties as needed
+}
 
 @customElement('boss-card')
 export class BossCard extends LitElement {
@@ -72,49 +76,49 @@ export class BossCard extends LitElement {
         border-radius: 10px;
         z-index: 0;
       }
-  /* ------------- Lazy Loading ------------------- */
-  .blurred-img {
-    background-repeat: no-repeat;
-    background-size: cover;
-    /* position: relative; */
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-  }
-  .blurred-img::before {
-    content: '';
-    position: absolute;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-    inset: 0;
-    opacity: 0;
-    animation: pulse 2.5s infinite;
-    background-color: var(--text-color);
-  }
-  @keyframes pulse {
-    0% {
-      opacity: 0;
-    }
-    50% {
-      opacity: 0.1;
-    }
-    100% {
-      opacity: 0;
-    }
-  }
-  .blurred-img.loaded::before {
-    animation: none;
-    content: none;
-  }
-  .blurred-img img {
-    opacity: 0;
-    transition: opacity 250ms ease-in-out;
-  }
-  .blurred-img.loaded img {
-    opacity: 1;
-  }
-  /* ----------------- Lazy Loading end ------------------- */
+      /* ------------- Lazy Loading ------------------- */
+      .blurred-img {
+        background-repeat: no-repeat;
+        background-size: cover;
+        /* position: relative; */
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+      }
+      .blurred-img::before {
+        content: '';
+        position: absolute;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        border-bottom-left-radius: 10px;
+        inset: 0;
+        opacity: 0;
+        animation: pulse 2.5s infinite;
+        background-color: var(--text-color);
+      }
+      @keyframes pulse {
+        0% {
+          opacity: 0;
+        }
+        50% {
+          opacity: 0.1;
+        }
+        100% {
+          opacity: 0;
+        }
+      }
+      .blurred-img.loaded::before {
+        animation: none;
+        content: none;
+      }
+      .blurred-img img {
+        opacity: 0;
+        transition: opacity 250ms ease-in-out;
+      }
+      .blurred-img.loaded img {
+        opacity: 1;
+      }
+      /* ----------------- Lazy Loading end ------------------- */
 
       .top-text h2 {
         position: absolute;
@@ -159,22 +163,22 @@ export class BossCard extends LitElement {
     this.bossUrl = this.data?.component?.replace('.md', '');
   }
 
-
-
-  @property({ type: { name: String } }) data = null;
-  @property({ type: String }) bossUrl = null;
+  @property({ type: Object }) data: Boss | undefined | null ;
+  @property({ type: String }) bossUrl: string | undefined ;
   @property({ type: Boolean }) imageLoaded = false;
   render() {
     return html`
       <div
         class="card"
         @click=${() => {
-          window.location.href = `/bloodborne/boss/${this.bossUrl}`;
+          window.location.href = `/bloodborne-blog/boss/${this.bossUrl}`;
         }}
       >
         <div class="card-im">
           <div class="top-text">
-            <h2 style="position:absolute;top:76%;padding:1rem;font-size:20px;z-index:1000;">
+            <h2
+              style="position:absolute;top:76%;padding:1rem;font-size:20px;z-index:1000;"
+            >
               ${this.data?.data.name}
             </h2>
           </div>
@@ -184,7 +188,14 @@ export class BossCard extends LitElement {
           <div
             class="image-part blurred-img ${this.imageLoaded ? 'loaded' : ''}"
           >
-            <img height="340" src="${this.data?.data.image}" alt="Image" @load=${()=>{this.imageLoaded=true}} />
+            <img
+              height="340"
+              src="${this.data?.data.image || ''}"
+              alt="Image"
+              @load=${() => {
+                this.imageLoaded = true;
+              }}
+            />
           </div>
         </div>
       </div>
