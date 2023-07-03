@@ -28,7 +28,8 @@ When she teleports you should sprint and try to find her again and do that rinse
 <br /> 
 
 ## Things to watch out for
-Firstly, watch out for her forcefield attack, it does a lot of aoe damage and might hurt you if you get too close. Secondly, the second body of the witch casts a blue projectile, you should dodge it at all costs. This projectile is a snare that will keep you in your place for at least 6 seconds which is more than enough time for hear to tear your eyeballs out (quite literally!!).
+Firstly, watch out for her forcefield attack, it does a lot of aoe damage and might hurt you if you get too close. 
+Secondly, the second body of the witch casts a blue projectile, you should dodge it at all costs. This projectile is a snare that will keep you in your place for at least 6 seconds which is more than enough time for hear to tear your eyeballs out (quite literally!!).
 
 Thirdly, be mindful that you should be really fast and on your feet in this fight because the second body of the witch can revive the first body so speed is key in this fight.
 
