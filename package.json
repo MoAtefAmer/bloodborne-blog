@@ -17,7 +17,8 @@
     "lit": "^2.7.2",
     "marked": "^5.0.4",
     "node-fs": "^0.1.7",
-    "pages": "^0.0.16"
+    "pages": "^0.0.16",
+    "terser": "^5.18.2"
   },
   "devDependencies": {
     "@types/node": "^20.2.6",
