@@ -9,7 +9,7 @@ tags: []
 
 
 <figure>
-<img src="/witchfight.jpg" class="rounded-md my-8" alt="Father g" style="width:1000px;border-radius:8px:">
+<img src="../images/witchfight.jpg" class="rounded-md my-8" alt="Father g" style="width:1000px;border-radius:8px:">
 </figure>
 
 

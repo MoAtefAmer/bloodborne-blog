@@ -9,7 +9,7 @@ tags: []
 
 #### "Beasts all over the shop... You'll be one of them, sooner or later..."
 <figure>
-<img src="/father-g.jpg" class="rounded-md my-8" alt="Father g" style="width:1000px;border-radius:8px:">
+<img src="../images/father-g.jpg" class="rounded-md my-8" alt="Father g" style="width:1000px;border-radius:8px:">
 </figure>
 
 
