@@ -9,7 +9,7 @@ tags: []
 
 
 
-<img src="/cl-beast.jpg" class="rounded-md my-8" alt="Cleric Beast" style="width:1000px;">
+<img src="../images/cl-beast.jpg" class="rounded-md my-8" alt="Cleric Beast" style="width:1000px;">
 
 
 ### Beast of the clergy

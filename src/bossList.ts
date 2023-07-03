@@ -4,7 +4,7 @@ export const bossList = [
     component: 'cleric-beast.md',
     data: {
       name: 'Cleric Beast',
-      image: '/cleric_beast.jpg',
+      image: '/images/cleric_beast.jpg',
     },
   },
   {
@@ -12,7 +12,7 @@ export const bossList = [
     component: 'father-g.md',
     data: {
       name: 'Father Gascoigne',
-      image: '/father-gas.jpg',
+      image: '/images/father-gas.jpg',
     },
   },
   {
@@ -20,7 +20,7 @@ export const bossList = [
     component: 'father-g.md',
     data: {
       name: 'Vicar Amelia',
-      image: '/vicaram.jpg',
+      image: '/images/vicaram.jpg',
     },
   },
   {
@@ -28,7 +28,7 @@ export const bossList = [
     component: 'father-g.md',
     data: {
       name: 'Blood Starved Beast',
-      image: '/bloodstarvedb.png',
+      image: '/images/bloodstarvedb.png',
     },
   },
   {
@@ -36,7 +36,7 @@ export const bossList = [
     component: 'father-g.md',
     data: {
       name: 'Undead Giant',
-      image: '/UndeadG.png',
+      image: '/images/UndeadG.png',
     },
   },
   {
@@ -44,7 +44,7 @@ export const bossList = [
     component: 'father-g.md',
     data: {
       name: 'Merciless Watchers',
-      image: '/mwatchers.jpg',
+      image: '/images/mwatchers.jpg',
     },
   },
   {
@@ -52,7 +52,7 @@ export const bossList = [
     component: 'father-g.md',
     data: {
       name: 'Watchdog of the Old Lords',
-      image: '/watchdog.jpeg',
+      image: '/images/watchdog.jpeg',
     },
   },
   {
@@ -60,7 +60,7 @@ export const bossList = [
     component: 'witch-hemwick.md',
     data: {
       name: 'Witch of Hemwick',
-      image: '/witch.webp',
+      image: '/images/witch.webp',
     },
   },
 ];
