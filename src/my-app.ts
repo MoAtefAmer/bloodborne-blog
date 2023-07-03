@@ -70,14 +70,13 @@ export class MyApp extends LitElement {
   render() {
     return html`
       <div class="flexw flexr main-container">
-        <img  src="bloodbornebanner.png" alt="Image" />
+        <img  src="/images/bloodbornebanner.png" alt="Image" />
         <h2 style=" font-size: 24px;font-weight: bold;">
           A simple strategy guide to defeat Bloodborne bosses
         </h2>
       </div>
       <div class="flexw flexr main-container">
         ${map(bossList, (boss) => {
-          console.log('boss :>> ', boss);
           return html`<boss-card .data=${boss} ></boss-card>`;
         })}
 
