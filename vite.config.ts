@@ -2,13 +2,10 @@ import { defineConfig } from 'vite';
 import legacy from '@vitejs/plugin-legacy';
 import { terser } from 'rollup-plugin-terser';
 
-// Determine the environment mode
-const isProduction = true
+
 
 // Configure allowed origins based on the mode
-const allowedOrigins = isProduction
-  ? ['https://moatefamer.github.io/bloodborne-blog/']
-  : '*';
+const allowedOrigins = '*'
 
 export default defineConfig({
   base: '/bloodborne-blog/',
