@@ -1,4 +1,4 @@
-import { bossList } from './../public/data/index';
+import { bossList } from './bossList.ts';
 import { LitElement, css, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 

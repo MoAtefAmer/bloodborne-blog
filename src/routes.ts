@@ -3,7 +3,7 @@ import './my-app';
 import './bloodborne-gallery';
 import './components/boss-page';
 import './not-found-page';
-import { bossList } from '../public/data';
+import { bossList } from './bossList';
 
 
 const bloodborneBossesRoute = bossList.map((item) => ({
