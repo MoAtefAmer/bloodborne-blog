@@ -3,7 +3,7 @@ import legacy from '@vitejs/plugin-legacy';
 import { terser } from 'rollup-plugin-terser';
 
 // Determine the environment mode
-const isProduction = false
+const isProduction = true
 
 // Configure allowed origins based on the mode
 const allowedOrigins = isProduction
