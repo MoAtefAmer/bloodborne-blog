@@ -10,9 +10,7 @@ const allowedOrigins = '*'
 export default defineConfig({
   base: '/bloodborne-blog/',
   plugins: [
-    legacy({
-      targets: ['defaults', 'not IE 11'],
-    }),
+   
   ],
   build: {
     minify: 'terser',
