@@ -230,7 +230,7 @@ const ft=e=>t=>"function"==typeof t?((e,t)=>(customElements.define(e,t),t))(e,t)
       /* ----------- CARD END--------------- */
     `],vt([_t({type:Object})],yt.prototype,"data",2),vt([_t({type:String})],yt.prototype,"bossUrl",2),vt([_t({type:Boolean})],yt.prototype,"imageLoaded",2),yt=vt([ft("boss-card")],yt);var $t=Object.defineProperty,At=Object.getOwnPropertyDescriptor,Et=(e,t,n,r)=>{for(var i,s=r>1?void 0:r?At(t,n):t,o=e.length-1;o>=0;o--)(i=e[o])&&(s=(r?i(t,n,s):i(s))||s);return r&&s&&$t(t,n,s),s};let Ct=class extends dt{constructor(){super(...arguments),this.count=0,this.path="",this.bossList=[]}async connectedCallback(){super.connectedCallback()}render(){return We`
       <div class="flexw flexr main-container">
-        <img  src="/images/bloodbornebanner.png" alt="Image" />
+        <img  src="/bloodbornebanner.png" alt="Image" />
         <h2 style=" font-size: 24px;font-weight: bold;">
           A simple strategy guide to defeat Bloodborne bosses
         </h2>
