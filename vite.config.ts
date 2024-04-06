@@ -25,6 +25,9 @@ export default defineConfig({
     // other build options...
   },
   server: {
+    host:true,
+    port: 3000,
+    
     cors: {
       origin: allowedOrigins,
       credentials: true,
